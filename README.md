@@ -53,4 +53,5 @@ Here you can find the **endpoints** for different modules:
 - User-auth module for user authentication and authorization
 - User-management module for basic CRUD endpoints
 - Task-management module for managing tasks and
+
   > Note: _In order to manage tasks, after authorizing the specific user you will need to take that JWT token and use it to authorize actions for tasks-management. You can see_ **AUTHORIZE** _button at the top of the page containing the api documentation._
