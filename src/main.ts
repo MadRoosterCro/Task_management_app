@@ -8,7 +8,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService: ConfigService = app.get(ConfigService);
 
-  // Swagger documentation
+  // Swagger API documentation
   const config = new DocumentBuilder()
     .setTitle(configService.get<string>('API_TITLE'))
     .setDescription(configService.get<string>('API_DESCRIPTION'))
