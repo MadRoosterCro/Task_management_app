@@ -43,7 +43,7 @@ $ npm run start:prod
 
 After running the app and checking the `.env` file for the path, you can find the API documentation by opening `localhost`.
 
-> Note: _http://localhost:3000/api/documentation_ is default for accesing the documentation.
+> Note: _http://localhost:3000/api/documentation_ is default for accesing documentation.
 
 ## Endpoints
 
