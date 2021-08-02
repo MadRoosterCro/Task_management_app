@@ -1,6 +1,7 @@
 # Description
 
 I am creating this as a personal task management system. Feel free to use it if you like it.
+I am using NestJS with PostgreSQL. I plan to add Swagger documentation to make life easier.
 
 # Setup
 
