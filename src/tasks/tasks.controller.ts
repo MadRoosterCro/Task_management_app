@@ -15,10 +15,12 @@ import {
   ApiInternalServerErrorResponse,
   ApiNotFoundResponse,
   ApiOperation,
+  ApiTags,
 } from '@nestjs/swagger';
 import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
 import { Task } from './task.entity';
 
+@ApiTags('Task management')
 @Controller('tasks')
 export class TasksController {
   constructor(private tasksService: TasksService) {}
