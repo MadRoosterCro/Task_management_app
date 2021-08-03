@@ -15,7 +15,7 @@ $ nvm use
 $ npm install
 ```
 
-> Note: _If you do not have node version manager installed, make sure to user proper node version from_ **.nvmrc** _file_
+> Note: _The plan is to add JWT tokens_
 
 ## Docker
 
