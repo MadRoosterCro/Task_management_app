@@ -13,15 +13,15 @@ async function bootstrap() {
 
   // Swagger API documentation
   const config = new DocumentBuilder()
-    .setTitle(configService.get<string>('API_TITLE'))
-    .setDescription(configService.get<string>('API_DESCRIPTION'))
-    .setVersion(configService.get<string>('API_VERSION'))
+    .setTitle(configService.get('API_TITLE'))
+    .setDescription(configService.get('API_DESCRIPTION'))
+    .setVersion(configService.get('API_VERSION'))
     .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup(
-    configService.get<string>('API_DOCUMENTATION_PATH'),
+    configService.get('API_DOCUMENTATION_PATH'),
     app,
     document,
   );
@@ -30,7 +30,7 @@ async function bootstrap() {
   app.useGlobalInterceptors(new TransformInterceptor());
   app.enableCors();
 
-  await app.listen(configService.get<string>('APP_PORT'));
+  await app.listen(configService.get('APP_PORT'));
   logger.log(`Application listening on port ${process.env.APP_PORT}!`);
 }
 bootstrap();
