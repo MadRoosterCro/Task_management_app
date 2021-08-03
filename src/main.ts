@@ -4,8 +4,10 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { TransformInterceptor } from './transform.interceptor';
+import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
+  const logger = new Logger();
   const app = await NestFactory.create(AppModule);
   const configService: ConfigService = app.get(ConfigService);
 
@@ -29,5 +31,6 @@ async function bootstrap() {
   app.enableCors();
 
   await app.listen(configService.get<string>('APP_PORT'));
+  logger.log(`Application listening on port ${process.env.APP_PORT}!`);
 }
 bootstrap();
