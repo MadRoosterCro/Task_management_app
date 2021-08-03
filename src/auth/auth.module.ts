@@ -21,7 +21,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         },
       }),
     }),
-
     TypeOrmModule.forFeature([UsersRepository]),
   ],
   providers: [AuthService, JwtStrategy],
