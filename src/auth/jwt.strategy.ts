@@ -10,7 +10,8 @@ import { UsersRepository } from './users.repository';
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
-    @InjectRepository(UsersRepository) private usersRepository: UsersRepository,
+    @InjectRepository(UsersRepository)
+    private usersRepository: UsersRepository,
     private configService: ConfigService,
   ) {
     super({
@@ -22,7 +23,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   async validate(payload: JwtPayload): Promise<User> {
     const { username } = payload;
     const user: User = await this.usersRepository.findOne({ username });
-    
+
     if (!user) {
       throw new UnauthorizedException();
     }

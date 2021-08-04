@@ -1,31 +1,24 @@
 import {
   Body,
   Controller,
-  Get,
-  Post,
-  Param,
   Delete,
+  Get,
+  Param,
   Patch,
+  Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { GetUser } from '../auth/get-user.decorator';
+import { User } from '../auth/user.entity';
 import { CreateTaskDto } from './dto/create-task.dto';
-import { TasksService } from './tasks.service';
-import { GetTasksFilterDto } from './dto/get-tasks.filter.dto';
-import {
-  ApiInternalServerErrorResponse,
-  ApiNotFoundResponse,
-  ApiOperation,
-  ApiTags,
-} from '@nestjs/swagger';
 import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
 import { Task } from './task.entity';
-import { UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
-import { User } from 'src/auth/user.entity';
-import { GetUser } from 'src/auth/get-user.decorator';
+import { TasksService } from './tasks.service';
 import { Logger } from '@nestjs/common';
+import { GetTasksFilterDto } from './dto/get-tasks.filter.dto';
 
-@ApiTags('Task management')
 @Controller('tasks')
 @UseGuards(AuthGuard())
 export class TasksController {
@@ -34,7 +27,6 @@ export class TasksController {
   constructor(private tasksService: TasksService) {}
 
   @Get()
-  @ApiOperation({ summary: 'Get all tasks' })
   getTasks(
     @Query() filterDto: GetTasksFilterDto,
     @GetUser() user: User,
@@ -47,14 +39,8 @@ export class TasksController {
     return this.tasksService.getTasks(filterDto, user);
   }
 
-  @Get(':id')
-  @ApiOperation({ summary: 'Get a single task by' })
-  @ApiNotFoundResponse()
-  @ApiInternalServerErrorResponse()
+  @Get('/:id')
   getTaskById(@Param('id') id: string, @GetUser() user: User): Promise<Task> {
-    this.logger.verbose(
-      `User "${user.username}" retrieving a task. Id: ${JSON.stringify(id)}`,
-    );
     return this.tasksService.getTaskById(id, user);
   }
 
@@ -71,18 +57,18 @@ export class TasksController {
     return this.tasksService.createTask(createTaskDto, user);
   }
 
-  @Delete(':id')
+  @Delete('/:id')
   deleteTask(@Param('id') id: string, @GetUser() user: User): Promise<void> {
     return this.tasksService.deleteTask(id, user);
   }
 
-  @Patch(':id/status')
+  @Patch('/:id/status')
   updateTaskStatus(
     @Param('id') id: string,
-    @Body() updateTaskStatus: UpdateTaskStatusDto,
+    @Body() updateTaskStatusDto: UpdateTaskStatusDto,
     @GetUser() user: User,
   ): Promise<Task> {
-    const { status } = updateTaskStatus;
+    const { status } = updateTaskStatusDto;
     return this.tasksService.updateTaskStatus(id, status, user);
   }
 }
