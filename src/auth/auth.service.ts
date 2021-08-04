@@ -29,7 +29,7 @@ export class AuthService {
       const accessToken: string = await this.jwtService.sign(payload);
       return { accessToken };
     } else {
-      throw new UnauthorizedException('Check your login credentials');
+      throw new UnauthorizedException('Please check your login credentials');
     }
   }
 }

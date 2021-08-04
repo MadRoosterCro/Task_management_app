@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { TasksModule } from './tasks/tasks.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
-import { HealthModule } from './health/health.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { configValidationSchema } from './config.schema';
 
 @Module({
@@ -17,7 +16,7 @@ import { configValidationSchema } from './config.schema';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
-        const isProduction = configService.get('STAGE') === 'production';
+        const isProduction = configService.get('STAGE') === 'prod';
 
         return {
           ssl: isProduction,
@@ -36,7 +35,6 @@ import { configValidationSchema } from './config.schema';
       },
     }),
     AuthModule,
-    HealthModule,
   ],
 })
 export class AppModule {}
