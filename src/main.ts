@@ -30,7 +30,7 @@ async function bootstrap() {
   app.useGlobalInterceptors(new TransformInterceptor());
   app.enableCors();
 
-  await app.listen(configService.get('APP_PORT'));
-  logger.log(`Application listening on port ${process.env.APP_PORT}!`);
+  await app.listen(process.env.PORT);
+  logger.log(`Application listening on port ${process.env.PORT}!`);
 }
 bootstrap();

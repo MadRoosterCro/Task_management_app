@@ -10,7 +10,7 @@ services:
     environment:
       POSTGRES_USER: ${DB_USERNAME:-username}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-password}
-      POSTGRES_DB: ${DB_DATABASE:-db}
+      POSTGRES_DB: ${DB_NAME:-db}
     volumes:
       - db-data:/var/lib/postgresql/data/
 
