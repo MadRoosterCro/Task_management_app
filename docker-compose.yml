@@ -3,7 +3,7 @@ version: '3.7'
 services:
   postgres:
     env_file:
-      - .env
+      - .env.stage.dev
     image: 'postgres:latest'
     ports:
       - ${DB_PORT:-5432}:5432
