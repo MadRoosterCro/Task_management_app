@@ -2,6 +2,7 @@
 
 I am creating this as a personal task management system. Feel free to use it if you like it.
 I am using NestJS with PostgreSQL and TypeORM. I plan to add Swagger documentation to make life easier.
+Also, I plan to do the frontend part for this, probably React. Or Vue. Or something.
 
 # Setup
 
