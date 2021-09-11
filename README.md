@@ -2,9 +2,10 @@
 
 I am creating this as a personal task management system. Feel free to use it if you like it.
 I am using NestJS with PostgreSQL and TypeORM. 
-
 I believe in good documentation and that's why I added Swagger.
+Also, I plan to do the frontend part for this, probably React. Or Vue.
 
+I was also considering Angular since I'm currently learning that.
 
 
 # Setup
@@ -55,6 +56,6 @@ Here you can find the **endpoints** for different modules:
 
 - Health-check module that verifies that the app is running
 - User-auth module for user authentication and authorization
-- Task-management module for managing tasks and
+- Task-management module for managing tasks
 
   > Note: _In order to manage tasks, after authorizing the specific user you will need to take that JWT token and use it to authorize actions for tasks-management. You can see_ **AUTHORIZE** _button at the top of the page containing the api documentation._
