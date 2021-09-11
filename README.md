@@ -1,7 +1,11 @@
 # Description
 
 I am creating this as a personal task management system. Feel free to use it if you like it.
-I am using NestJS with PostgreSQL and TypeORM. I plan to add Swagger documentation to make life easier.
+I am using NestJS with PostgreSQL and TypeORM. 
+
+I believe in good documentation and that's why I added Swagger.
+
+
 
 # Setup
 
