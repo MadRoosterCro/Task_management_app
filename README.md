@@ -54,3 +54,6 @@ Here you can find the **endpoints** for different modules:
 - Task-management module for managing tasks
 
   > Note: _In order to manage tasks, after authorizing the specific user you will need to take that JWT token and use it to authorize actions for tasks-management. You can see_ **AUTHORIZE** _button at the top of the page containing the api documentation._
+
+
+p.s. Heroku does not work as expected, I will look into that later on. 
